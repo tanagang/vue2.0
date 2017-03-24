@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-for</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<h1>标题</h1>
+<hr>
+<div id="app">
+    <ul>
+        <li v-for="asd in student">
+            {{asd}}
+        </li>
+    </ul>
+</div>
+
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            student:[23,12,34,25,54,23,65],
+        },
+        computed:{
+            student:function () {
+                return [1,2,3,4,5]
+            },
+        }
+    })
+</script>
+</body>
+</html>

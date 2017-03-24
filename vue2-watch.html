@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue修饰符</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+	<script src="js/lodash.js"></script>
+	<script>
+		window.onload=function(){
+			
+			var vm = new Vue({
+			  el: '#app',
+			  data: {
+				message:"111",
+				json:{"a":"aaa","b":"bbb"}
+			  },
+			  methods:{
+				submit:function(){
+					console.log(this.message);
+				}
+			  },
+			  watch:{
+				"message":function(curVal,oldVal){
+					console.log(curVal+"---"+oldVal);//当前值和过去的值
+					alert("message改变了");
+				},
+				"json":{
+					handler(curVal,oldVal){
+					　//注意：当观察的数据为对象或数组时，curVal和oldVal是相等的，因为这两个形参指向的是同一个数据对象
+						console.log(curVal.a+"---"+oldVal.a);//当前值和过去的值
+						alert("json改变了");
+					},
+					deep:true
+				}
+			  }
+			});
+			
+			//监听
+			/*vm.$watch("message",function(curVal,oldVal){
+				alert("messge改变了");
+			});
+			vm.$watch("json",function(curVal,oldVal){
+				alert("json改变了");
+			},{deep:true});
+			*/
+			
+			document.onclick=function(){
+				vm.message = "222";
+				//当单观察数据json为对象时，如果键值发生变化，为了监听到数据变化，需要添加deep:true参数
+				vm.json.a = "aaaaaaaaaaaaa"
+			}
+		}
+	</script>
+</head>
+<body>
+  <div id="app">
+	  <p>{{message}}</p>
+	  <p>{{json}}</p>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社——http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+
+	<script>
+		window.onload=function(){
+			/*Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li>{{ todo.text }}</li>'
+			})
+			*/
+			var vm = new Vue({
+				data:{
+					msg:"hello",
+					msg2:'22',
+					jsonStr:{uname:"zhangsan",age:"18"}
+				},
+				components:{
+					'my-aaa':{
+						props:['m','myM','json'],
+						/*props:{
+							m:String,
+							myM:Number
+						},*/
+						//template:"<div>我是子{{m}}</div>" m属于自定义属性
+						template:"#aaa",
+						methods:{
+							change(){
+								this.json.uname="lisi";//子组件修改父组件的数据
+							}
+						}
+					}
+				}
+			}).$mount("#app");
+		}
+	</script>
+</head>
+<body>
+    <div id="app">  
+	  <div>{{jsonStr}}</div>
+	  <my-aaa :m="msg" :my-m="msg2" :json="jsonStr"></my-aaa>
+	</div>
+	<template id="aaa">
+		<div>
+			获取父级数据=>{{m}}==>{{myM}}==>{{json.uname}}<br>
+			<input type="button" value="按钮" @click="change()" />
+		</div>
+	  </template>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

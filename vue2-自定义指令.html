@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义指令</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+	<script>
+		window.onload=function(){
+			Vue.directive("red",function(el){
+				//console.log(el.innerHTML);
+				el.style.background="red";
+			});
+			Vue.directive("demo",function(el,v){//el必填
+				console.log(v.value);
+				console.log(v.value.username);
+				console.log(v.value.age);
+			});
+			var vm = new Vue({
+			  el: '#app-7',
+			  data: {
+				message:"123"
+			  }
+			});
+			
+			//console.log(vm.groceryList.length);
+		}
+	</script>
+</head>
+<body>
+  <div id="app-7">
+	<span v-red>{{message}}</span>	<br>
+	<span v-demo="{username:'Tom',age:'12'}">{{message}}</span>	
+  </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue修饰符</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+	<script src="js/lodash.js"></script>
+	<script>
+		window.onload=function(){
+			
+			var vm = new Vue({
+			  el: '#app',
+			  data: {
+				message:"123"
+			  },
+			  methods:{
+				submit:function(){
+					console.log(this.message);
+				},
+				submit2:function(){
+					console.log("你按了enter");
+				},
+				submit3:function(){
+					console.log("你按了我自定义的按键F2");
+				},
+				cha:function(){//只在change事件中起作用
+					console.log(this.message);
+				}
+			  }
+			});
+			//自定义按键修饰符
+			Vue.config.keyCodes.f1 = 113;
+		}
+	</script>
+</head>
+<body>
+  <div id="app">
+	  <p style="background:#ccc">{{message}}</p>
+	  <!--表单修饰符--->
+	  <div>lazy==><input type="text" v-model.lazy="message" @change="cha()"  @keyup="submit()"/></div>
+	  <div>trim==><input type="text" v-model.trim="message" @keyup="submit()" /></div>
+	  <!--事件修饰符-->
+	   <div>事件修饰符once==><input type="text" v-model="message" placeholder="事件只执行一次" @keyup.once="submit()" /></div>
+	   <!--按键修饰符--> 
+	   <div>按键修饰符==><input @keyup.enter="submit2"></div>
+	    <!--自定义按键修饰符--> 
+	   <div>自定义按键修饰符==><input @keyup.f1="submit3"></div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

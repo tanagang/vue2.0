@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社——http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+
+	<script>
+		window.onload=function(){
+			var vm = new Vue({
+				data:{
+					msg:"hello",
+					age:'12',
+				},
+				mounted(){
+					
+					console.log(this.$refs.p.innerHTML);//this.$refs不能数据绑定，不是响应式的
+				}
+			}).$mount("#app");
+
+		}
+	</script>
+</head>
+<body>
+    <div id="app"> 
+	  <div>{{msg}}</div>
+	  年龄:{{age+1}}
+	  <br>
+	  <p ref="p">{{msg}}</p>
+	  <input type="text" v-model="msg"/>
+	  <p v-once>我只响应一次=》{{msg}}</p>
+	</div>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

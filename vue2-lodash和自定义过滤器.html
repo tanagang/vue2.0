@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社——http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+	<script src="js/lodash.js"></script>
+	<script>
+		window.onload=function(){
+			/*Vue.component('todo-item', {
+			  props: ['todo'],
+			  template: '<li>{{ todo.text }}</li>'
+			})*/
+			var vm = new Vue({
+			  el: '#app-7',
+			  data: {
+				groceryList: [
+				  { text: 'vegetables' },
+				  { text: 'cheese' },
+				  { text: 'whatever' }
+				],
+				message:"123",
+				message2:"abc"
+			  },
+			  components:{
+				'todo-item': {
+				  props: ['todo'],
+				  template: '<li>{{ todo.text }}</li>'
+				}
+			  },
+			  /*filters:{//局部定于过滤器
+				toUpcase:function(value){
+					return value.toUpperCase();
+				}
+			  },*/
+			   computed: {
+				// a computed getter
+				reversedMessage: function () {
+				  //  实时监控并且计算
+				  return this.message.split('').reverse().join('');
+				}
+			  },
+			  mounted:function(){
+				//alert("bind over");
+			  },
+			  methods:{
+				submit:_.debounce(function(){//lodash延迟方法
+					console.log("我延迟了1000毫秒");
+				},1000)
+			  }
+			});
+			
+			//console.log(vm.groceryList.length);
+		}
+	</script>
+</head>
+<body>
+  <div id="app-7">
+	  <ol>
+		<todo-item v-for="item in groceryList" v-bind:todo="item"></todo-item>
+	  </ol>
+	  <p v-for="item in groceryList">{{item.text | toUpcase(1,2) }}</p>
+	  
+	  <div>{{reversedMessage}}</div>
+	  
+	  <div>lodash==><input type="text" v-model="message" @keyup="submit()" /></div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
