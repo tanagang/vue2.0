@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta property="qc:admins" content="1516067742540360273137646375" />
+	<meta property="wb:webmaster" content="fd79ae766678103f" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="Cache-Control" CONTENT="no-cache">
+	<meta http-equiv="Pragma" CONTENT="no-cache">
+	<title>login</title>
+	<link rel="stylesheet" type="text/css" href="css/global.css" />
+	<link rel="stylesheet" type="text/css" href="css/login.css" />
+	<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/public.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+	<!--公共头部-->
+	<div class="header">
+		<div class="header-top sm-hidden">
+			<div class="wd1000">
+				<ul>
+					<li id="userInfo" class="my_pao pao_partten"><a href="login.html">登录</a> / <a href="regist.html">注册</a></li>
+					<li class="mp hide"><a href="pindex.html" class="my_pao pao_partten">我的泡泡</a></li>
+					<li><a href="patternTag2.html" class="my_pao">泡泡模式</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="header-nav clearfix">
+			<div class="logo clearfix">
+				<a href="index.html"><img src="img/header-nav.png" /></a>
+				<div class="sm-hidden infomation">有知庐集研究、实践、教学为一体，通过筛选出有助于理想未来的愿望型有知需求，促进其转变为公德型有知需求，以推动社会的进步。有知庐使用前沿的商业模式，将盈余100%支持这一事业的理念推广和独立运营。</div>
+			</div>
+			<div class="bar hide sm-visible">
+				<span id="userInfo2"><a href="login.html">登录</a>&ensp;/&ensp;<a href="regist.html">注册 </a></span>
+				<a href="javascript:void(0)" id="barToggle"><img src="img/bar.png" /></a>
+				<ul id="ulNav" class="hide">
+
+					<li rel="navTwo"><a href="navTwo.html">尊严儿童</a></li>
+					<li rel="navOne"><a href="navOne.html">进步商业</a></li>
+					<!-- <li rel="navThree"><a href="navThree.html">救急精神</a></li> -->
+				</ul>
+			</div>
+			<ul class="ul-nav sm-hidden">
+				<li rel="navTwo"><a href="navTwo.html">尊严儿童</a></li>
+				<li rel="navOne"><a href="navOne.html">进步商业</a></li>
+
+				<!-- <li rel="navThree"><a href="navThree.html">救急精神</a></li> -->
+			</ul>
+		</div>
+		<div class="header-bottom hide">
+			<div class="wd1000">
+				<p class="header-bottom-t">有知庐</p>
+				<p class="header-bottom-b">集研究、实践、教学为一体，通过筛选出有助于理想未来的愿望型有知需求，促进其转变为公德型有知需求，以推动社会的进步。有知庐使用前沿的商业模式，将盈余100%支持这一事业的理念推广和独立运营。</p>
+				<p class="header-bottom-t">有知需求</p>
+				<p class="header-bottom-b">是指超越个人生存和繁殖的需求，包括对自身，他人、社会、动物或环境的关注， 分为愿望型（个人或少数人的）和公德型（大多数人所共享的）。</p>
+			</div>
+		</div>
+	</div>
+	<div class="wd1000">
+		<!--login主体-->
+		<div class="loginSystem clearfix">
+			<div class="loginSystem-l fl sm-hidden">
+				<h3>成为有知庐会员，您可享有</h3>
+				<ul>
+					<li class="loginSystem-l-t">
+						* 查看泡泡
+					</li>
+					<li>查看、收藏、评分视频记录</li>
+				</ul>
+				<ul>
+					<li class="loginSystem-l-t">
+						* 分享泡泡
+					</li>
+					<li>上传视频（最多一分钟），并结合文字，作出简单描述，分享自己的泡泡。关键词：拍摄时间、地点，简要描述当时当地的情况，你拍摄的心情</li>
+				</ul>
+				<ul>
+					<li class="loginSystem-l-t">
+						* 激励泡泡
+					</li>
+					<li>购买我们精心准备的产品，支持其它上传的泡泡</li>
+				</ul>
+			</div>
+			<div class="loginSystem-r fr">
+				<div class="change">
+					<a href="javascript:void(0)" class="on">登录</a>
+					<a href="regist.html">注册</a>
+				</div>
+				<div class="login login-list">
+					<form action="" autocomplete="off">
+						<input type="text" id="loginName" autocomplete="off" placeholder="手机号码或邮箱" />
+						<input type="password" id="loginPwd" autocomplete="off" placeholder="密码" />
+						<a href="javascript:void(0);" class="forgot">忘记登录密码？</a>
+						<ul class="loginstyle clearfix sm-hidden">
+							<li>使用其他方式登录</li>
+							<li>
+								<a href="javascript:void(0);" class="qq"><img src="img/login/qq.png" width="20"></a>&ensp;</li>
+							<li>
+								<a href="javascript:void(0);" class="sina"><img src="img/login/sina.png" width="20"></a>
+							</li>
+						</ul>
+						<a href="javascript:void(0)" id="toLogin" />登录</a>
+					</form>
+					<div class="other-way hide sm-visible">
+						<p class="pp"><span>其他登录方式</span></p>
+						<p class="login-icon">
+							<a href="javascript:void(0)" class="qq"><img src="img/login/qq.png" width="24"><br>QQ</a>
+							<a href="javascript:void(0)" class="sina"><img src="img/login/sina.png" width="24"><br>微博</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--公共内容底部-->
+	<div id="footer"></div>
+	<style>
+
+	.header-top ul li a.my_pao{color: #2653a4; padding: 10px 30px; background-color:#fff; border-radius: 5px; border:1px solid #2653a4; margin-top: 14px;}
+	.header-top ul li.my_pao{color: #2653a4; padding: 10px 30px; background-color:#fff; border-radius: 5px; border:1px solid #2653a4; margin-top: 14px}
+	.header-top ul li.my_pao a{ color: #2653a4;}
+	.header-top ul li a.pao_partten{color: #fff; background-color:#2653a4;}
+	.header-top ul li.pao_partten{color: #fff; background-color:#2653a4;}
+	.header-top ul li.pao_partten a{color: #fff;}
+
+		.forgetPwd {
+			max-width: 300px;
+			height: 365px;
+			padding: 20px 5%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+			background: #fff;
+		}
+
+		.forgetPwd h3 {
+			margin-bottom: 20px;
+			color: #333
+		}
+
+		.forgetPwd .close {
+			position: absolute;
+			right: 0;
+			top: 0;
+			padding: 5px 10px;
+		}
+
+		.forgetPwd input {
+			width: 100%;
+			margin: 8px 0;
+			padding: 8px 0;
+			text-indent: 5px;
+		}
+
+		.forgetPwd a.send {
+			display: block;
+			position: absolute;
+			margin: auto;
+			top: 0;
+			right: 5px;
+			bottom: 0;
+			left: auto;
+			background: #234788;
+			font-size: 12px;
+			border-radius: 3px;
+			color: #fff;
+			width: 80px;
+			height: 25px;
+			text-align: center;
+			line-height: 25px;
+		}
+
+		#subModify {
+			width: 100%;
+			background: #234788;
+			color: #fff;
+			height: 35px;
+			line-height: 35px;
+			text-align: center;
+			display: block;
+			font-size: 16px;
+			margin-top: 15px
+		}
+	</style>
+	<div class="mask hide">
+		<div class="forgetPwd">
+			<a href="javascript:void(0)" class="close"><img src="img/close.png" /></a>
+			<h3>忘记密码</h3>
+			<p><input type="text" id="registerName" placeholder="手机号码" /></p>
+			<div style="position:relative"><input type="text" id="verify2" placeholder="图形验证码" /><a href="javascript:void(0)" class="send" style="background: none;right:20px"><img id="imgCode" src="" /></a></div>
+			<!--<div style="position:relative"><input type="text" id="registerName" placeholder="手机号码" /><a href="javascript:void(0)" class="send" rel="0">获取验证码</a></div>-->
+			<div style="position:relative"><input type="text" placeholder="验证码" id="yzm" /><a href="javascript:void(0)" class="send send2" rel="0">获取验证码</a></div>
+			<!--<p><input type="text" placeholder="验证码" id="yzm" /></p>-->
+			<p><input type="password" autocomplete="off" placeholder="密码" id="pwd" /></p>
+			<p><input type="password" autocomplete="off" placeholder="确认密码" id="pwd2" /></p>
+			<p class="error"></p>
+			<p><a href="javascript:void(0)" id="subModify">确认</a></p>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	$(function() {
+		//判断用户是否登录
+		var userid = $.cookie("c_member_mobile");
+		if (userid) {
+			userid = userid.substring(0, 3) + "****" + userid.substring(7, 11);
+			$(".mp").removeClass("hide");
+		}
+		
+		//获取图片验证码
+		$("#imgCode").click(function(){
+			var obj = $(this)[0];
+			$.ajax({
+				type: "post",
+				dataType: dataType,
+				url: url + "user/getImage.json",
+				data: {},
+				success: function(data) {
+					var randomnum = Math.random();
+		            obj.src =url+data.picSrc+"?r=" + randomnum;
+				}
+			});
+		}).trigger("click");
+		
+		
+		
+		//登录
+		$("#toLogin").click(function() {
+			var mobile = $("#loginName").val();
+			var pwd = $("#loginPwd").val();
+			if (mobile == "") {
+				alert("请填写用户名");
+				return;
+			}
+			if (pwd == "") {
+				alert("请填写密码");
+				return;
+			}
+			$.ajax({
+				type: "post",
+				dataType: dataType,
+				url: url + "user/login.json",
+				data: {
+					mobileOrEmail: mobile,
+					password: pwd
+				},
+				success: function(data) {
+					if (data.respCode == "0000") {
+						if(/addpao/.test(location.hash)){
+								window.location.href="addPao.html";
+								return ;
+						}
+						console.log(data);
+						alert("登录成功！");
+						
+						$("#loginPwd,#loginName").val("");
+						var url2 = $.cookie("url2");
+					
+						if (url2) {
+							window.location.href = url2;
+						} else {
+							window.location.href = "index.html";
+						}
+					} else {
+						alert(data.respMsg);
+					}
+				}
+			});
+		});
+		//新浪登陆
+		$(".sina").click(function() {
+			$.ajax({
+				type: "post",
+				dataType: dataType,
+				url: url + "weiboLogin.json",
+				success: function(data) {
+					//console.log(data);
+					if (data.respCode == "0000") {
+						window.location.href = data.authorizeUrl;
+					}
+				}
+			});
+		});
+		//QQ登录
+		$(".qq").click(function() {
+			$.ajax({
+				type: "post",
+				dataType: dataType,
+				url: url + "qqLogin.json",
+				success: function(data) {
+					if (data.respCode == "0000") {
+						window.location.href = data.authorizeUrl;
+					}
+				}
+			});
+		});
+				
+		
+		//短信发送
+		$(".send2").click(function() {
+			var mobile = $("#registerName").val();
+			var obj = $(this);
+			if (isMobilePhone(mobile)) {
+				var imgcode = $("#verify2").val();
+				if(imgcode==""){
+					alert("请填写图形验证码");
+					return;
+				}
+				send(mobile, obj, "01",imgcode);
+			} else {
+				alert("请输入正确的手机号")
+			}
+		});
+		//确认修改
+		$("#subModify").click(function() {
+			var mobile = $("#registerName").val();
+			var yzm = $("#yzm").val();
+			var pwd = $("#pwd").val();
+			var pwd2 = $("#pwd2").val();
+			if (!isMobilePhone(mobile)) {
+				$(".error").html("请输入正确的手机号码").show();
+				return;
+			}
+			if (yzm == "") {
+				$(".error").html("请输入验证码").show();
+				return;
+			}
+			if (pwd == "" || pwd2 == "") {
+				$(".error").html("请输入密码").show();
+				return;
+			}
+			if (pwd != pwd2) {
+				$(".error").html("两次密码输入不一致").show();
+				return;
+			}
+			$.ajax({
+				type: "post",
+				dataType: dataType,
+				url: url + "user/setPassword.json",
+				data: {
+					mobile: mobile,
+					password: pwd,
+					smsCode: yzm,
+					imgCode:$("#verify2").val()
+				},
+				success: function(data) {
+					console.log(data);
+					if (data.respCode == "0000") {
+						alert("密码重置成功！");
+						$(".mask").hide();
+						$(".error").html("");
+					}else{
+						alert(data.respMsg)
+					}
+				}
+			});
+		});
+		//弹窗忘记登录密码
+		$(".forgot").click(function() {
+			$(".mask").show();
+		});
+		//关闭弹窗
+		$(".forgetPwd .close").click(function() {
+			$(this).closest(".mask").hide();
+		});
+	});
+	// 登录注册背景
+	$(".wd1000 .my_pao").hover(function(){
+		$(".wd1000 .my_pao").removeClass("pao_partten")
+		$(this).addClass("pao_partten");
+	},function(){
+		$(this).removeClass("pao_partten");
+	})
+	$(".header-top").mouseleave(function(){
+		$(".wd1000 .my_pao").eq(0).addClass("pao_partten");
+	});
+</script>
