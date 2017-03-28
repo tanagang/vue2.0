@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社——http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app"> 
+	  {{msg}}<br>
+	  {{json}}
+	</div>
+</body>
+</html>
+	<script>
+			var vm = new Vue({
+				data:{
+					msg:"hello",
+					json:{"text":"aa"}
+				}
+			}).$mount("#app");
+			Vue.set(vm.json,"text","bb");//set只使用于对象，所以对msg没有作用
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
