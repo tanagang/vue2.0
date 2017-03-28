@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件间数据传递</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+
+	<script>
+		var EVENT = new Vue();
+		var A = {
+			data(){
+				return{
+					a:"组件a的数据"
+				}
+			},
+			methods:{
+				send(){
+					EVENT.$emit("my-a",this.a);
+				}
+			},
+			template:`
+				<div>
+					<p>我是组件A--<input type="button" value="a传给c" @click="send()" /></p>	
+				</div>
+			`
+		};
+		var B = {
+			data(){
+				return{
+					a:"组件b的数据"
+				}
+			},
+			methods:{
+				send(){
+					EVENT.$emit("my-b",this.a);
+				}
+			},
+			template:`
+				<div>
+					<p>我是组件B--<input type="button" value="b传给c" @click="send()" /></p>
+				</div>
+			`
+		};
+		var C = {
+			data(){
+				return{
+					a:"",
+					b:""
+				}
+			},
+			mounted(){
+				EVENT.$on("my-a",function(a){
+					this.a = a
+				}.bind(this));
+				EVENT.$on("my-b",function(a){
+					this.b = a
+				}.bind(this))
+			},
+			template:`
+				<div>
+					<p>我是组件C</p>
+					<p>接受组件A传来的数据：{{a}}</p>
+					<p>接受组件Ｂ传来的数据：{{b}}</p>
+				</div>
+			`
+		};
+
+		window.onload=function(){
+			var vm = new Vue({
+				data:{
+					msg:"hello"
+				},
+				components:{
+					"com-a":A,
+					"com-b":B,
+					"com-c":C
+				}
+			}).$mount("#app");
+		}
+	</script>
+</head>
+<body>
+    <div id="app"> 
+	   <com-a></com-a>
+	   <com-b></com-b>
+	   <com-c></com-c>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>智能社——http://www.zhinengshe.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <script src="js/vue.min.js"></script>
+    <style type="text/css">
+    	.blk{width:100px;height:100px;background: red;margin:10px auto;}	
+    </style>
+	<script>
+		window.onload=function(){
+			var vm = new Vue({
+				data:{
+					show:false
+				},
+                methods:{
+                     beforeEnter: function (el) {
+                        // ...
+                      },
+                      // 此回调函数是可选项的设置
+                      // 与 CSS 结合时使用
+                      enter: function (el, done) {
+                        // ...
+                      },
+                      afterEnter: function (el) {
+                        // ...
+                      }
+                }
+			}).$mount("#app");
+		}
+	</script>
+</head>
+<body>
+    <div id="app"> 
+    	<input type="button" value="点击显示隐藏" @click="show=!show">
+
+		<transition-group 
+            enter-active-class="animated bounceInLeft"
+            leave-active-class="animated bounceOutRight"
+
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:after-enter="afterEnter"
+            >
+			<div class="blk" v-show="show" :key="1"></div>
+            <div class="blk" v-show="show" :key="2"></div>
+		</transition-group>
+
+<!--多个元素动画用transition-group，并且子元素要加:key-->
+		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
