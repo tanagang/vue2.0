@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>template判断语句</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+
+</head>
+<body>
+    <div id="app"> 
+	  <template v-if="num==0">
+		{{msg}}----0
+	  </template>
+	   <template v-else-if="num==1">
+		{{msg}}-----1
+	  </template>
+	   <template v-else-if="num==2">
+		{{msg}}-----2
+	  </template>
+	   <template v-else>
+		{{msg}}-----3
+	  </template>
+	</div>
+</body>
+</html>
+	<script>
+			var vm = new Vue({
+				data:{
+					num:1,
+					msg:"hello",
+					json:{"text":"aa"}
+				}
+			}).$mount("#app");
+			Vue.set(vm.json,"text","bb");//set只使用于对象，所以对msg没有作用
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

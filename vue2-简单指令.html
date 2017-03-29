@@ -15,9 +15,10 @@
 					msg:"hello",
 					age:'12',
 				},
-				mounted(){
+				created(){
+					//console.log(this.$refs.p.innerHTML);//this.$refs不能数据绑定，不是响应式的
 					
-					console.log(this.$refs.p.innerHTML);//this.$refs不能数据绑定，不是响应式的
+					console.log(this.$refs.img);
 				}
 			}).$mount("#app");
 
@@ -30,6 +31,9 @@
 	  年龄:{{age+1}}
 	  <br>
 	  <p ref="p">{{msg}}</p>
+	  
+	  <img src="https://www.baidu.com/img/bd_logo1.png" ref="img" />
+	  
 	  <input type="text" v-model="msg"/>
 	  <p v-once>我只响应一次=》{{msg}}</p>
 	</div>
