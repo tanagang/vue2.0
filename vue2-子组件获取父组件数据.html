@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>智能社——http://www.zhinengshe.com</title>
+    <title>子组件获取父组件数据</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -18,21 +18,19 @@
 			var vm = new Vue({
 				data:{
 					msg:"hello",
-					msg2:'22',
 					jsonStr:{uname:"zhangsan",age:"18"}
 				},
 				components:{
 					'my-aaa':{
-						props:['m','myM','json'],
+						props:['m','json'],
 						/*props:{
-							m:String,
-							myM:Number
+							m:String
 						},*/
 						//template:"<div>我是子{{m}}</div>" m属于自定义属性
 						template:"#aaa",
 						methods:{
 							change(){
-								this.json.uname="lisi";//子组件修改父组件的数据
+								this.json.age="20";//子组件修改父组件的数据
 							}
 						}
 					}
@@ -43,13 +41,13 @@
 </head>
 <body>
     <div id="app">  
-	  <div>{{jsonStr}}</div>
-	  <my-aaa :m="msg" :my-m="msg2" :json="jsonStr"></my-aaa>
+	  <div>我是父组件：{{jsonStr}}</div>
+	  <my-aaa :m="msg" :json="jsonStr"></my-aaa>
 	</div>
 	<template id="aaa">
 		<div>
-			获取父级的数据=>{{m}}==>{{myM}}==>{{json.uname}}<br>
-			<input type="button" value="按钮" @click="change()" />
+			我是子组件：接收父组件的数据=>{{m}}==>{{json}}<br>
+			<input type="button" value="点击更新改变父组件数据" @click="change()" />
 		</div>
 	  </template>
 </body>
