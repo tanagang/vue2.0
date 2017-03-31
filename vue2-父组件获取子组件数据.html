@@ -16,16 +16,20 @@
 				},
 				methods:{
 					getChild(v){
-						alert(v);
 						this.msg = v
 					}
 				},
 				components:{
 					'my-aaa':{
+						data(){
+							return{
+								text:{a:"aaa",b:"bbb"}
+							}
+						},
 						template:"#aaa",
 						methods:{
 							change(){
-								this.$emit("send",1111);
+								this.$emit("send",this.text);
 							}
 						}
 					}
@@ -42,6 +46,7 @@
 	</div>
 	<template id="aaa">
 		<div>
+			<p>我是子组件的数据：{{text}}</p>
 			<input type="button" value="发送数据给父组件" @click="change()" />
 		</div>
 	  </template>
