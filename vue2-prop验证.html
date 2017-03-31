@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子组件获取父组件数据</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+
+	<script>
+		window.onload=function(){
+			var vm = new Vue({
+				data:{
+					num:10,
+					msg:"hello",
+					jsonStr:{uname:"zhangsan",age:"18"}
+				},
+				components:{
+					'my-aaa':{
+						//props:['m','json'],
+						props:{
+							num2:{
+							  validator: function () {
+								  alert();
+								console.log("11111111111");
+							  }
+							},
+							msg2:String,
+							json2:{
+								type:Object,
+								default: function () {
+									return {uname:"lisi",age:"20"}
+								}
+
+							}
+						},
+						template:"#aaa",
+					}
+				}
+			}).$mount("#app");
+		}
+	</script>
+</head>
+<body>
+    <div id="app">  
+	  <div>我是父组件：{{jsonStr}}</div>
+	  <my-aaa :num2="num" :msg2="msg" :json23="jsonStr"></my-aaa>
+	</div>
+	<template id="aaa">
+		<div>
+			我是子组件：接收父组件的数据=>{{num2}}==>{{msg2}}==>{{json2}}<br>
+		</div>
+	  </template>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
