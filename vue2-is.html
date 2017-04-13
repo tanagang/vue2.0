@@ -16,16 +16,24 @@
 		<button @click="tab='bbb'">组件BBB</button>
 		<component :is="tab"></component>
 	</div>
+	<template id="aaa">
+		<div>我是组件aaa</div>
+	</template>
+	<template id="bbb">
+		<div>我是组件bbb</div>
+	</template>
 </body>
 </html>
 
 <script>
 	window.onload=function(){
 		var AAA = {
-			template:'<div>我是组件aaa</div>'
+			template:'#aaa'
+			//template:'<div>我是组件aaa</div>'
 		}
 		var BBB = {
-			template:'<div>我是组件bbb</div>'
+			template:'#bbb'
+			//template:'<div>我是组件bbb</div>'
 		}
 		var vm = new Vue({
 			data:{
