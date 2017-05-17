@@ -20,8 +20,10 @@
 					}
 				},
 				mounted(){
+
 					console.log("父组件也可以通过this.$children的方法直接获取子组件的数据，",this.$children);
 					console.log("子组件是一个数组，根据页面组件排放顺序获取子组件数据，如this.$children[0]就是先获取my-bbb的数据，因为页面中my-bbb放在my-aaa之前");
+					console.log("也可以通过ref来获取特定子组件中的数据",this.$refs.refB.text.aa);
 				},
 				components:{
 					'my-aaa':{
@@ -55,7 +57,7 @@
 <body>
     <div id="app">  
 	  <div>我是父组件{{msg}}</div>
-	  <my-bbb></my-bbb>
+	  <my-bbb  ref="refB"></my-bbb>
 	  <my-aaa @send="getChild"></my-aaa><br>
 	 
 	</div>
