@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>子组件获取父组件数据</title>
+    <title>父组件获取子组件数据</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -19,6 +19,10 @@
 						this.msg = v
 					}
 				},
+				mounted(){
+					console.log("父组件也可以通过this.$children的方法直接获取子组件的数据，",this.$children);
+					console.log("子组件是一个数组，根据页面组件排放顺序获取子组件数据，如this.$children[0]就是先获取my-bbb的数据，因为页面中my-bbb放在my-aaa之前");
+				},
 				components:{
 					'my-aaa':{
 						data(){
@@ -32,6 +36,15 @@
 								this.$emit("send",this.text);
 							}
 						}
+					},
+					'my-bbb':{
+						data(){
+							return{
+								text:{aa:"aaaaaa",bb:"bbbbbb"}
+							}
+						},
+						template:"<div>{{text}}</div>"
+						
 					}
 					
 				}
@@ -42,7 +55,9 @@
 <body>
     <div id="app">  
 	  <div>我是父组件{{msg}}</div>
-	  <my-aaa @send="getChild"></my-aaa>
+	  <my-bbb></my-bbb>
+	  <my-aaa @send="getChild"></my-aaa><br>
+	 
 	</div>
 	<template id="aaa">
 		<div>
