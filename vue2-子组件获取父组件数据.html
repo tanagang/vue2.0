@@ -25,7 +25,8 @@
 						template:"#aaa",
 						methods:{
 							change(){
-								this.json.age="20";//子组件修改父组件的数据
+								console.log("子组件也可以通过this.$parent的方法直接获取父组件的数据",this.$parent.$data.jsonStr.uname);
+								this.json.age="20";//子组件修改父组件的数据,但是父组件必须传过来对象
 							}
 						}
 					}
@@ -42,7 +43,7 @@
 	<template id="aaa">
 		<div>
 			我是子组件：接收父组件的数据=>{{m}}==>{{json}}<br>
-			<input type="button" value="点击更新改变父组件数据" @click="change()" />
+			<input type="button" value="点击更新并改变父组件数据" @click="change()" />
 		</div>
 	  </template>
 </body>
