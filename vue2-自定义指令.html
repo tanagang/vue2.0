@@ -13,6 +13,13 @@
 				//console.log(el.innerHTML);
 				el.style.background="red";
 			});
+			Vue.directive("ins",function(el){
+
+				el.onblur=function(){
+					console.log(el.value);
+				}
+				
+			});
 			Vue.directive("demo",function(el,v){//el必填
 				console.log(v.value);
 				console.log(v.value.username);
@@ -31,6 +38,7 @@
 </head>
 <body>
   <div id="app-7">
+	 <input v-ins type="text" />	<br>
 	<span v-red>{{message}}</span>	<br>
 	<span v-demo="{username:'Tom',age:message}">{{message}}</span>	
   </div>
