@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>defineProperty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>	
+</head>
+<body>
+	<a href="http://www.cnblogs.com/kidney/p/6052935.html?utm_source=gold_browser_extension">相关文章</a>
+	<br/>
+	 访问器属性是对象中的一种特殊属性，它不能直接在对象中设置，而必须通过 defineProperty() 方法单独定义。
+	 <h3>
+	1. 首先，需要利用Object.defineProperty，将要观察的对象，转化成getter/setter，以便拦截对象赋值与取值操作，称之为Observer；<br>
+2.需要将DOM解析，提取其中的指令与占位符，并赋与不同的操作，称之为Compiler；<br>
+3.需要将Compile的解析结果，与Observer所观察的对象连接起来，建立关系，在Observer观察到对象数据变化时，接收通知，同时更新DOM，称之为Watcher；<br>
+4.最后，需要一个公共入口对象，接收配置，协调上述三者，称为Vue;
+</h3>
+	<br>
+   <input type="text" id="a" value="" />
+   <span id="b"></span>
+</body>
+</html>
+
+<script>
+	var obj = {};
+	Object.defineProperty(obj,"hello",{
+		get:function()
+		{
+			console.log("get方法被调用了");
+		},
+		set:function(val)
+		{
+			console.log("set方法被调用了"+val);
+			document.getElementById("a").value = val;
+			document.getElementById("b").innerHTML = val;
+		}
+	});
+	document.addEventListener('keyup',function(e){
+		obj.hello = e.target.value;
+	})
+	//以下是个人观点
+	//model=>view 通过defineProperty.set方法更新视图
+	//view=>model 通过监听视图中值是否变化，如果变化则通过definePropery.get方法给获取给vue中data
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
