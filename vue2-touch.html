@@ -2,53 +2,78 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>组件</title>
+    <title>v-touch</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <script src="js/vue.min.js"></script>
-    <script src="js/vue-touch.js"></script>
-
-	<script>
-		window.onload=function(){
-			/*Vue.component("home",{
-				template:"#aaa"
-			});*/
-			//http://www.cnblogs.com/QRL909109/p/6166250.html
-			
-			var HOME = {
-				template:"#aaa"
-			}
-			//Vue.component("home",HOME);
-			var vm = new Vue({
-				data:{
-					msg:"hello"
-				},
-				components:{
-					"home":HOME
-				},
-				mounted(){
-					console.log(this.$refs.dd.style.background="red");
-				}
-			}).$mount("#app");
-
-		}
-	</script>
+    <script type="text/javascript" src="js/vue-touch.js"></script>
+    <style>
+  		*{margin:0;padding:0;}
+  		a{text-decoration: none;color:#333;}
+  		body{max-width: 640px;margin:0 auto;overflow-x:hidden }
+  		.p{text-align: center;padding:20px 0;}
+    	.list{list-style: none;overflow-x:hidden;margin:0 10px;}
+    	.list li{height:45px;line-height: 45px;border-top:1px solid #ccc;position: relative;}
+    	.list li p{transition:all 0.2s ease;}
+    	.list li .goods{display:block;}
+    	.list li .del{position: absolute;top:-1px;right:-80px;width:80px;height:46px;line-height: 46px;background: #f60;text-align: center;color:#fff;}
+    	.nodata{text-align: center;padding:20px 0;border-top:1px solid #ccc;}
+    </style>
 </head>
 <body>
     <div id="app"> 
-	  <home></home>
-	  <div ref="dd">{{msg}}</div>
+	  <p class="p">向左滑动删除</p>
+	  <ul class="list">
+	  	<li v-for="(item,idx) in attr"><!--本例v-touch指令不能和v-for放在同一dom中，会出问题，所以放在子元素p中-->
+	  		<p v-touch:swipeleft="swipeLeft" v-touch:swiperight="swipeRight"  ref="p">
+		  		<a href="javascript:void(0)" class="goods">{{idx+1}} {{item}}</a>
+		  		<a href="javascript:void(0)" class="del" @click="del(idx)">{{idx}}删除</a>
+		  	</p>
+	  	</li>
+	  </ul>
+	  <p v-if="attr.length==0" class="nodata">暂无数据...</p>
 	</div>
-	<template id="aaa">
-		<div>
-			我是home
-		</div>
-	</template>
 </body>
 </html>
 
-
+<script>
+		var vm = new Vue({
+			el:"#app",
+			data:{
+				attr:["家用电器","滚筒洗衣机","奥克斯空调","格兰仕冰箱"]
+			},
+			methods:{
+				swipeLeft:function(el,binding){
+					for(var i = 0;i<this.$refs.p.length;i++){
+						this.$refs.p[i].style.cssText="transform:translateX(0)"
+					}
+					el.style.cssText="transform:translateX(-80px)"
+				},
+				swipeRight:function(el,binding){
+					el.style.cssText="transform:translateX(0)"
+				},
+				del:function(idx){
+					this.$refs.p[idx].style.cssText="transform:translateX(0)"
+					this.attr.splice(idx,1)
+				}
+			}
+		});
+		
+		/*
+		https://cn.vuejs.org/v2/guide/custom-directive.html#钩子函数参数
+钩子函数被赋予了以下参数：
+el: 指令所绑定的元素，可以用来直接操作 DOM 。
+binding: 一个对象，包含以下属性：
+name: 指令名，不包括 v- 前缀。
+value: 指令的绑定值， 例如： v-my-directive="1 + 1", value 的值是 2。
+oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用。
+expression: 绑定值的字符串形式。 例如 v-my-directive="1 + 1" ， expression 的值是 "1 + 1"。
+arg: 传给指令的参数。例如 v-my-directive:foo， arg 的值是 "foo"。
+modifiers: 一个包含修饰符的对象。 例如： v-my-directive.foo.bar, 修饰符对象 modifiers 的值是 { foo: true, bar: true }。
+vnode: Vue 编译生成的虚拟节点，查阅 VNode API 了解更多详情。
+oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用。*/
+</script>
 
 
 

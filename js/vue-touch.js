@@ -1,4 +1,4 @@
-export default(Vue) => {
+//export default(Vue) => {//spa组件调用时使用
     Vue.directive('touch', {
         bind: function (el, binding, vnode) {
             var touchType = binding.arg; //传入的模式 press swipeRight swipeLeft swipeTop swipeDowm Tap
@@ -19,7 +19,7 @@ export default(Vue) => {
                 var result = 0;
 
                 //如果滑动距离太短
-                if (Math.abs(dx) < 2 && Math.abs(dy) < 2) {
+                if (Math.abs(dx) < 20 && Math.abs(dy) < 20) {
                     return result;
                 }
 
@@ -46,7 +46,7 @@ export default(Vue) => {
                 timeOutEvent = setTimeout(() =>{
                     timeOutEvent = 0 ;
                     if(touchType === 'press'){
-                        binding.value()
+                        binding.value(el, binding, vnode)
                     }
                 } , 500);
 
@@ -71,22 +71,22 @@ export default(Vue) => {
                         break;
                     case 'swipeup':
                         if(touchType === 'swipeup'){
-                            binding.value()
+                            binding.value(el, binding, vnode)
                         }
                         break;
                     case 'swipedown':
                         if(touchType === 'swipedown'){
-                            binding.value()
+                            binding.value(el, binding, vnode)
                         }
                         break;
                     case 'swipeleft':
                         if(touchType === 'swipeleft'){
-                            binding.value()
+                            binding.value(el, binding, vnode)
                         }
                         break;
                     case 'swiperight':
                         if(touchType === 'swiperight'){
-                            binding.value()
+                            binding.value(el, binding, vnode)
                         }
                         break;
                     default:
@@ -94,4 +94,4 @@ export default(Vue) => {
             }, false);
         }
     })
-}
+//}
