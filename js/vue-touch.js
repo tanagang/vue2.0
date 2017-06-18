@@ -1,7 +1,7 @@
 //export default(Vue) => {//spa组件调用时使用
     Vue.directive('touch', {
-        bind: function (el, binding, vnode) {
-            var touchType = binding.arg; //传入的模式 press swipeRight swipeLeft swipeTop swipeDowm Tap
+        bind: function (el, binding, vnode) {//不写bind，默认调用就是bind
+            var touchType = binding.arg; //传入的模式 longpress swipeRight swipeLeft swipeTop swipeDowm Tap
             var timeOutEvent = 0;
             var direction = '';
             //滑动处理
@@ -45,10 +45,10 @@
                 //判断长按
                 timeOutEvent = setTimeout(() =>{
                     timeOutEvent = 0 ;
-                    if(touchType === 'press'){
+                    if(touchType === 'longpress'){
                         binding.value(el, binding, vnode)
                     }
-                } , 500);
+                } , 1000);
 
             }, false);
 
@@ -67,7 +67,9 @@
 
                 switch (direction) {
                     case 0:
-
+                        if(touchType === 'longPress'){
+                            binding.value(el, binding, vnode)
+                        }
                         break;
                     case 'swipeup':
                         if(touchType === 'swipeup'){
