@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app"> 
+		<h2 class="example">class="example" 的标题</h2>
+		<p class="example">点击按钮为第一个带有 class="example" 的 p 元素添加背景颜色。</p>
+		<p class="example">class="example" 的段落。</p>
+		<button @click="myFunction()">点我</button>
+	</div>
+</body>
+</html>
+
+	<script>
+		
+		var vm = new Vue({
+			data:{
+				msg:"hello"
+			},
+			methods:{
+				myFunction:function(){
+					//获取文档中 class="example" 的第一个 <p> 元素:
+					document.querySelector("p.example").style.backgroundColor = "red";
+				}
+			}
+		}).$mount("#app");
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
