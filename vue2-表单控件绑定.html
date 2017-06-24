@@ -9,12 +9,15 @@
     <script src="js/vue.min.js"></script>	
 </head>
 <body>
-    <div id="app">  
-		<input type="checkbox" id="checkbox" v-model="chk">
-		<label for="checkbox">{{ chk }}</label>
+    <div id="app"> 
+    	<div v-for="(item,index) in attr">
+    		<input type="checkbox" id="checkbox" v-model="item.checked">
+			<label for="checkbox">{{ item.checked }}</label>{{item}}
+    	</div> 
+		
 		<br>
-		<br>
-
+		
+		------------------------------------<br>
 		<input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
 		<label for="jack">Jack</label>
 		<input type="checkbox" id="john" value="John" v-model="checkedNames">
@@ -24,8 +27,8 @@
 		<br>
 		<span>Checked names: {{ checkedNames }}</span>
 		<br>
-		<br>
-
+		
+		------------------------------------<br>
 		<input type="radio" id="one" value="One" v-model="picked">
 		<label for="one">One</label>
 		<br>
@@ -42,7 +45,20 @@
 	
 		var vm = new Vue({
 			data:{
-				chk:true,
+				attr:[
+					{
+						name:"aaa",
+						checked:false
+					},
+					{
+						name:"bbb",
+						checked:false
+					},
+					{
+						name:"ccc",
+						checked:false
+					},
+				],
 				checkedNames:[],
 				picked:''
 			}
