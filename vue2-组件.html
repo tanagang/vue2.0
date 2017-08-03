@@ -10,15 +10,22 @@
 
 	<script>
 		window.onload=function(){
+			//定义组件方法一
+			/*var HOME2  = Vue.extend({//vue2.0基本废弃
+				template:"#aaa"
+			});
+			Vue.component("home",HOME2);*/
+
+			//定义组件方法二
 			/*Vue.component("home",{
 				template:"#aaa"
 			});*/
 			
-			
+			//定义组件方法三
 			var HOME = {
 				template:"#aaa"
 			}
-			//Vue.component("home",HOME);
+			
 			var vm = new Vue({
 				data:{
 					msg:"hello"
@@ -30,6 +37,8 @@
 					console.log(this.$refs.dd.style.background="red");
 				}
 			}).$mount("#app");
+
+			console.log(vm.$root)
 
 		}
 	</script>
