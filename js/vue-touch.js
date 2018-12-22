@@ -3,6 +3,7 @@
         bind: function (el, binding, vnode) {//不写bind，默认调用就是bind
             var touchType = binding.arg; //传入的模式 longpress swipeRight swipeLeft swipeTop swipeDowm Tap
             var timeOutEvent = 0;
+            var timer = 0;
             var direction = '';
             //滑动处理
             var startX, startY;
@@ -21,6 +22,12 @@
                 //如果滑动距离太短
                 if (Math.abs(dx) < 20 && Math.abs(dy) < 20) {
                     return result;
+                }
+                //如果滑动时间超过500毫秒
+                if(new Date()*1 - timer > 500){
+                    return result;
+                }else{
+                    timer = new Date()*1;
                 }
 
                 var angle = GetSlideAngle(dx, dy);
@@ -41,7 +48,7 @@
             el.addEventListener('touchstart', function (ev) {
                 startX = ev.touches[0].pageX;
                 startY = ev.touches[0].pageY;
-
+                timer = new Date() * 1;
                 //判断长按
                 timeOutEvent = setTimeout(() =>{
                     timeOutEvent = 0 ;
@@ -62,7 +69,6 @@
                 endX = ev.changedTouches[0].pageX;
                 endY = ev.changedTouches[0].pageY;
                 direction = GetSlideDirection(startX, startY, endX, endY);
-
                 clearTimeout(timeOutEvent)
 
                 switch (direction) {
